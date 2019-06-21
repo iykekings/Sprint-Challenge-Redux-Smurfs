@@ -1,8 +1,13 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import Axios from 'axios';
 
+export const ADDING = 'ADDING';
+export const UPDATING = 'UPDATING';
+export const FETCHING = 'FETCHING';
+export const SUCCESS = 'SUCCESS';
+export const DELETING = 'DELETING';
+export const ERROR = 'ERROR';
+
+const baseUrl = 'http://localhost:3333/smurfs';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -13,3 +18,37 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const fetchSmurfs = () => dispatch => {
+  dispatch({type: FETCHING})
+  Axios.get(baseUrl)
+    .then( res => {
+      dispatch({type: SUCCESS, payload: res.data})
+    })
+    .catch( err => {
+      debugger
+      dispatch({type: ERROR, payload: err.message})
+    })
+}
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({type: ADDING})
+  Axios.post(baseUrl, smurf)
+    .then( res => {
+      dispatch({type: SUCCESS, payload: res.data})
+    })
+    .catch( err => {
+      dispatch({type: ERROR, payload: err.message})
+    })
+}
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({type: DELETING})
+  Axios.delete(`${baseUrl}/${id}`)
+    .then( res => {
+      dispatch({type: SUCCESS, payload: res.data})
+    })
+    .catch( err => {
+      dispatch({type: ERROR, payload: err.message})
+    })
+}

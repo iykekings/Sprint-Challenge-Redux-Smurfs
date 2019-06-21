@@ -3,3 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.smurfs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-bottom: 2rem;
+}
+
+.smurf {
+  border: 2px crimson solid;
+  margin: 1rem;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+span.del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ff2f2f;
+  padding: 7px;
+  font-weight: 500;
+  color: white;
+  border-radius: 0 0 0 20px;
+}
