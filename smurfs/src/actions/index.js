@@ -23,9 +23,20 @@ export const fetchSmurfs = () => dispatch => {
   dispatch({type: FETCHING})
   Axios.get(baseUrl)
     .then( res => {
-      debugger
+      dispatch({type: SUCCESS, payload: res.data})
     })
     .catch( err => {
-      debugger
+      dispatch({type: ERROR, payload: err.message})
+    })
+}
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({type: ADDING})
+  Axios.post(baseUrl, smurf)
+    .then( res => {
+      dispatch({type: SUCCESS, payload: res.data})
+    })
+    .catch( err => {
+      dispatch({type: ERROR, payload: err.message})
     })
 }
