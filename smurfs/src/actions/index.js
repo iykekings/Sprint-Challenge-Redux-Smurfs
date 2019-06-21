@@ -26,6 +26,7 @@ export const fetchSmurfs = () => dispatch => {
       dispatch({type: SUCCESS, payload: res.data})
     })
     .catch( err => {
+      debugger
       dispatch({type: ERROR, payload: err.message})
     })
 }
