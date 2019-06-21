@@ -1,7 +1,9 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+export const ADDING = 'ADDING';
+export const UPDATING = 'UPDATING';
+export const FETCHING = 'FETCHING';
+export const SUCCESS = 'SUCCESS';
+export const DELETING = 'DELETING';
+export const ERROR = 'ERROR';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
