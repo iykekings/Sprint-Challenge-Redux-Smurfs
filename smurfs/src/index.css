@@ -15,4 +15,17 @@ body {
   margin: 1rem;
   text-align: center;
   padding: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+span.del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ff2f2f;
+  padding: 7px;
+  font-weight: 500;
+  color: white;
+  border-radius: 0 0 0 20px;
 }
