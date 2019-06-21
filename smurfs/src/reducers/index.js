@@ -1,4 +1,4 @@
-import { SUCCESS, FETCHING, ADDING, UPDATING, DELETING, ERROR } from "../actions";
+import * as types from "../actions";
 
 
  const initialState = {
@@ -12,7 +12,7 @@ import { SUCCESS, FETCHING, ADDING, UPDATING, DELETING, ERROR } from "../actions
 
 const smurfsReducer = (state = initialState, action) => {
   switch(action.type) {
-    case SUCCESS:
+    case types.SUCCESS:
       return {
         error: null,
         smurfs: action.payload,
@@ -21,15 +21,15 @@ const smurfsReducer = (state = initialState, action) => {
         updatingSmurf: false,
         deletingSmurf: false,
       }
-    case FETCHING:
+    case types.FETCHING:
       return { ...state, fetchingSmurfs: true}
-    case ADDING:
+    case types.ADDING:
       return { ...state, addingSmurf: true}
-    case UPDATING:
+    case types.UPDATING:
       return { ...state, updatingSmurf: true}
-    case DELETING:
+    case types.DELETING:
       return { ...state, deletingSmurf: true}
-    case ERROR:
+    case types.ERROR:
       return { ...state, error: action.payload}
     default:
       return state
