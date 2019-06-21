@@ -41,3 +41,14 @@ export const addSmurf = smurf => dispatch => {
       dispatch({type: ERROR, payload: err.message})
     })
 }
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({type: DELETING})
+  Axios.delete(`${baseUrl}/${id}`)
+    .then( res => {
+      dispatch({type: SUCCESS, payload: res.data})
+    })
+    .catch( err => {
+      dispatch({type: ERROR, payload: err.message})
+    })
+}

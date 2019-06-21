@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { fetchSmurfs } from '../actions';
+import { fetchSmurfs, deleteSmurf } from '../actions';
 import SmurfsList from '../components/SmurfsList';
 
 class SmurfsView extends React.Component {
@@ -18,7 +18,7 @@ class SmurfsView extends React.Component {
         } else if(this.props.error) {
             return <p style={{fontWeight: 'bold', color: 'red'}}>{this.props.error}</p>
         }
-        return <SmurfsList {...this.props} />
+        return <SmurfsList {...this.props} delSmurf={this.props.deleteSmurf} />
         }
     }
 
@@ -32,4 +32,4 @@ const mapStateToProps = state => ({
     deletingSmurf: state.deletingSmurf
 })
 
-export default connect(mapStateToProps, {fetchSmurfs})(SmurfsView)
+export default connect(mapStateToProps, {fetchSmurfs, deleteSmurf})(SmurfsView)
