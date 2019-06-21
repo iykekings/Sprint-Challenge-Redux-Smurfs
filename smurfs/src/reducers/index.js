@@ -10,7 +10,7 @@ import { SUCCESS, FETCHING, ADDING, UPDATING, DELETING, ERROR } from "../actions
    error: null
  }
 
-export default smurfsReducer = (state = initialState, action) => {
+const smurfsReducer = (state = initialState, action) => {
   switch(action.type) {
     case SUCCESS:
       return {
@@ -35,3 +35,5 @@ export default smurfsReducer = (state = initialState, action) => {
       return state
   }
 }
+
+export default smurfsReducer;
