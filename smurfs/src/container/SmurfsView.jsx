@@ -1,11 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { fetchSmurfs } from '../actions';
 import SmurfsList from '../components/SmurfsList';
 
-const SmurfsView = props => {
-    return (
-        <SmurfsList {...props} />
-    )
+class SmurfsView extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount()  {
+        this.props.fetchSmurfs()
+    }
+
+    render() {
+        return (
+            <SmurfsList {...this.props} />
+        )
+    }
 }
 
 const mapStateToProps = state => ({
@@ -17,4 +28,4 @@ const mapStateToProps = state => ({
     deletingSmurf: state.deletingSmurf
 })
 
-export default connect(mapStateToProps, {})(SmurfsView)
+export default connect(mapStateToProps, {fetchSmurfs})(SmurfsView)
